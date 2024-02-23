@@ -2,8 +2,10 @@ import subprocess
 import pyttsx3
 import time
 import func
+import random
 ways = func.table_to_list("prog_ways.txt")
 progs = func.table_to_list("prog_phrases.txt")
+Anegdot = func.table_to_list("anegdotes.txt")
 engine = pyttsx3.init()
 engine.setProperty('rate',150)
 engine.setProperty("volune",1.0)
@@ -16,4 +18,6 @@ def open_prog(text):
             engine.runAndWait()
             time.sleep(0.5)
             subprocess.run(ways[progs.index(i)])
-            
+def say_anegdot(text):
+    engine.say(Anegdot[random.randint(1,len(Anegdot)-1)])
+    engine.runAndWait()

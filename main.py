@@ -9,11 +9,13 @@ start_phrases = func.table_to_list("start phrases.txt")
 engine = pyttsx3.init()
 engine.setProperty('rate',150)
 engine.setProperty("volune",1.0)
-model = Model('D:\kortana\\model_s')
+'''vosk'''
+model = Model('vosk-model-small-ru-0.22')
 rec = KaldiRecognizer(model, 16000)
 paudio = pyaudio.PyAudio()
 stream = paudio.open(format=pyaudio.paInt16, channels=1,rate=16000,input=True,frames_per_buffer=8000)
 stream.start_stream()
+print("good")
 def speech_to_text():
     while True:
         data = stream.read(4000,exception_on_overflow=False)
@@ -33,5 +35,7 @@ for text in speech_to_text():
             if "открой" in text:
                 print(skills.open_prog(text))
             engine.runAndWait()
+            if "расскажи анекдот" in text:
+                skills.say_anegdot(text)
 
     engine.runAndWait()
