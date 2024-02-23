@@ -2,25 +2,10 @@ import json,pyaudio
 from vosk import Model, KaldiRecognizer
 import pyttsx3
 import skills
-def notab(lis):
-    fff = []
-    for s in lis:
-        if"\n" in s:
-            s = s[:-1]
-            fff.append(s)
-        else:
-            fff.append(s)
-    return fff
-
-with open("phrases.txt",encoding="utf-8") as phrase:
-    phrases = phrase.readlines()
-    phrases = notab(phrases)
-with open("answers.txt",encoding="utf-8") as answer:
-    answers = answer.readlines()
-    answers = notab(answers)
-with open("start phrases.txt",encoding="utf-8")as startph:
-    stph = startph.readlines()
-    stph = notab(stph)
+import func
+phrases = func.table_to_list("phrases.txt")
+answers = func.table_to_list("answers.txt")
+start_phrases = func.table_to_list("start phrases.txt")
 engine = pyttsx3.init()
 engine.setProperty('rate',150)
 engine.setProperty("volune",1.0)
@@ -38,7 +23,7 @@ def speech_to_text():
                 yield answer["text"]
 for text in speech_to_text():
     print(text)
-    if text in stph:
+    if text in start_phrases:
         for text in speech_to_text():
             print(text)
             if text in phrases:

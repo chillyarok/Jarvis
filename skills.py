@@ -1,6 +1,9 @@
 import subprocess
 import pyttsx3
 import time
+import func
+ways = func.table_to_list("prog_ways.txt")
+progs = func.table_to_list("prog_phrases.txt")
 engine = pyttsx3.init()
 engine.setProperty('rate',150)
 engine.setProperty("volune",1.0)
