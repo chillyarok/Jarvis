@@ -10,14 +10,9 @@ engine.setProperty("volune",1.0)
 def open_prog(text):
     text = text.split()
     text = " ".join(text[1:])
-    if "хром" in text:
-        engine.say("открываю")
-        time.sleep(2)
-        subprocess.run(["C:\\Program Files\\Google\\Chrome\\Application\\Chrome.exe"])
-    elif "браузер" in text:
-        engine.say("открываю")
-        time.sleep(2)
-        subprocess.run(["C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"])
-    else:
-        engine.say("такое приложение не найдено")
-    return text
+    for i in progs:
+        if text in i:
+            engine.say("открываю")
+            time.sleep(1)
+            subprocess.run(ways[progs.index(i)])
+    engine.say("программа не найдена")
