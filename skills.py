@@ -11,7 +11,7 @@ def open_prog(text):
     text = text.split()
     text = " ".join(text[1:])
     for i in progs:
-        if text in i:
+        if i in text or text in i:
             engine.say("открываю")
             time.sleep(1)
             subprocess.run(ways[progs.index(i)])
