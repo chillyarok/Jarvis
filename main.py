@@ -3,14 +3,22 @@ from vosk import Model, KaldiRecognizer
 import pyttsx3
 import skills
 import func
-phrases = func.table_to_list("phrases.txt")
-answers = func.table_to_list("answers.txt")
+import xml.etree.ElementTree as ET
+'''xml'''
+answer = dict()
+tree = ET.parse("commands\speak\speak.xml")
+root = tree.getroot()
+for child in root:
+    ph = child.attrib.get('phrase')
+    an = child[0].text.split()
+    answer[ph]=an
+
 start_phrases = func.table_to_list("start phrases.txt")
 engine = pyttsx3.init()
-engine.setProperty('rate',150)
+engine.setProperty('rate',120)
 engine.setProperty("volune",1.0)
 '''vosk'''
-model = Model('vosk-model-small-ru-0.22')
+model = Model('models\\vosk-model-small-ru-0.22')
 rec = KaldiRecognizer(model, 16000)
 paudio = pyaudio.PyAudio()
 stream = paudio.open(format=pyaudio.paInt16, channels=1,rate=16000,input=True,frames_per_buffer=8000)
@@ -28,8 +36,9 @@ for text in speech_to_text():
     if text in start_phrases:
         for text in speech_to_text():
             print(text)
-            if text in phrases:
-                engine.say(answers[phrases.index(text)])
+            if text in answer.keys():
+                engine.say(answer[text][0])
+                engine.runAndWait()
             if text=="пока":
                 break
             if "открой" in text:
@@ -38,4 +47,4 @@ for text in speech_to_text():
             if "расскажи анекдот" in text:
                 skills.say_anegdot(text)
 
-    engine.runAndWait()
+    
