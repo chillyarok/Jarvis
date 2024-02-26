@@ -2,5 +2,6 @@
 <commands>
     <command phrase = "как дела">
         <answer>хорошо</answer>
+        <answer>хорошо, а у вас?</answer>
     </command>
 </commands>
