@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <commands>
     <command phrase = "как дела">
-        <answer>хорошо</answer>
+        <answer>хорошо.</answer>
         <answer>хорошо, а у вас?</answer>
     </command>
 </commands>

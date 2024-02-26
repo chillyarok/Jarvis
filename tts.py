@@ -4,7 +4,7 @@ import time
 language = 'ru'
 model_id = 'v3_1_ru' # другая версия русского
 sample_rate = 48000
-speaker = 'baya'
+speaker = 'aidar'
 put_accent = True
 put_yo = True
 

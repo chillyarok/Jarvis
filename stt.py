@@ -1,21 +1,17 @@
 import vosk
-import sys
-import sounddevice as sd
-import queue
+import json
+import pyaudio
 
 model = vosk.Model("models\\vosk-model-small-ru-0.22")
 sample_rate = 16000
-device_id = 1
-q = queue.Queue()
+rec = vosk.KaldiRecognizer(model, sample_rate)
+p = pyaudio.PyAudio()
+stream = p.open(format=pyaudio.paInt16,channels=1,rate=sample_rate,input=True,frames_per_buffer=8000)
+stream.start_stream()
 def listen():
-    def callback(indata,frames,time,status):
-        if status:
-            print(status,file=sys.stderr)
-        q.put(bytes(indata))
-    with sd.RawInputStream(samplerate=sample_rate,blocksize=8000,device=device_id,dtype="int16",channels=1,callback=callback):
-        rec = vosk.KaldiRecognizer(model,sample_rate)
-        while True:
-            data = q.get()
-            if rec.AcceptWaveform(data):
-                print(rec.Result()[14:-3])
-                return rec.Result()[14:-3]
+    while True:
+        data = stream.read(4000,exception_on_overflow=False)
+        if rec.AcceptWaveform(data) and len(data)>0:
+            answer = json.loads(rec.Result())
+            if answer["text"]:
+                yield answer['text']
