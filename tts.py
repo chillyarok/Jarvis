@@ -17,7 +17,7 @@ model, example_text = torch.hub.load(repo_or_dir='snakers4/silero-models',
                                      speaker=model_id,
                                      trust_repo=True) # <- доверяем репозиторию
 
-model.to(device)  # gpu or cpu
+model.to(device)
 
 def say(text: str):
     audio = model.apply_tts(text=text,
