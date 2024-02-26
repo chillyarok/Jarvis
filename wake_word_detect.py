@@ -21,5 +21,3 @@ def WakeWordDetect():
     finally:
         porcupine.delete()
         recoder.delete()
-
-print(WakeWordDetect())
