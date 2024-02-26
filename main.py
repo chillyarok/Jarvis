@@ -6,9 +6,9 @@ import wake_word_detect as wwd
 
 
 
-print("start")
+print("good")
 while True:
     if wwd.WakeWordDetect() == True:
         print(1)
         while True:
-            print(25)
+            print(stt.listen())

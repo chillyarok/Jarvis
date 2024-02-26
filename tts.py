@@ -19,7 +19,7 @@ model, example_text = torch.hub.load(repo_or_dir='snakers4/silero-models',
 
 model.to(device)  # gpu or cpu
 
-def say(text):
+def say(text: str):
     audio = model.apply_tts(text=text,
                             speaker=speaker,
                             sample_rate=sample_rate,
