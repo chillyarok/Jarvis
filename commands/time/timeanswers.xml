@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<commands>
+    <time type = "time">
+        <phrase>который час</phrase>
+    </time>
+    <date type = "date">
+        <phrase>какой сейчас день</phrase>
+    </date>
+</commands>

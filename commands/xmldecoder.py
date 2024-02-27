@@ -10,3 +10,15 @@ def speakkommand():
             answers.append(answer.text)
     frases[phrase] = answers
     return frases
+
+def timedecoder(type:str): #time или date
+    phrases = []
+    tree = ET.parse('commands\\time\\timeanswers.xml')
+    root = tree.getroot()
+    for child in root:
+        f = str(*child.attrib.values())
+        if f == type:
+            for phrse in child:
+                phrases.append(phrse.text)
+                return phrases
+                 
