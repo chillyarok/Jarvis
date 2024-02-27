@@ -22,6 +22,10 @@ for text in stt.listen():
                 t = time.time()
                 textf = wtime.howdate()
                 tts.say(textf)
+            if text in speak.timedecoder("time"):
+                  t = time.time()
+                  textf = wtime.howtime()
+                  tts.say(textf)
             if time.time()-t>30:
                 print(2)
                 break
