@@ -27,5 +27,5 @@ def say(text: str):
                             put_yo=put_yo)
     import sounddevice as sd
     sd.play(audio, sample_rate)
-    time.sleep((len(audio) / sample_rate)+1)
+    time.sleep((len(audio) / sample_rate))
     sd.stop()
