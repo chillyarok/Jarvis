@@ -31,6 +31,3 @@ while True:
                 t = time.time()
                 textf = weather.howweather()
                 tts.say(textf)
-            if time.time()-t>30 or "пока" in text:
-                print(2)
-                break
