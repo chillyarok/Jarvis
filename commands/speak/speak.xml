@@ -4,7 +4,4 @@
         <answer>хорошо.</answer>
         <answer>хорошо, а у вас?</answer>
     </command>
-    <command phrase = "какая сейчас погода">
-        <answer> </answer>
-    </command>
 </commands>

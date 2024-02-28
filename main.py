@@ -15,7 +15,7 @@ while True:
         t = time.time()
         for text in stt.listen():      
             print(text)
-            if text in str(speak.speakkommand().keys()) and text not in str(speak.speakkommand().keys())["ккакая сейчас погода"]:
+            if text in str(speak.speakkommand().keys()):
                 t = time.time()
                 textf = speak.speakkommand()[text][random.randint(0,len(speak.speakkommand()[text])-1)]
                 tts.say(textf)
@@ -27,9 +27,10 @@ while True:
                   t = time.time()
                   textf = wtime.howtime()
                   tts.say(textf)
-            if text in str(speak.speakkommand().keys())["ккакая сейчас погода"]:
+            if text in "какакая сейчас погода":
                 t = time.time()
                 textf = weather.howweather()
+                print(textf)
                 tts.say(textf)
             if time.time()-t>30:
                 print(2)
