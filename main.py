@@ -3,6 +3,7 @@ import stt
 import commands.xmldecoder as speak
 import commands.time.whattime as wtime
 import wake_word_detect as wwd
+import commands.weather.weather as weather
 import random
 import time
 
@@ -14,7 +15,7 @@ while True:
         t = time.time()
         for text in stt.listen():      
             print(text)
-            if text in str(speak.speakkommand().keys()):
+            if text in str(speak.speakkommand().keys()) and text not in str(speak.speakkommand().keys())["ккакая сейчас погода"]:
                 t = time.time()
                 textf = speak.speakkommand()[text][random.randint(0,len(speak.speakkommand()[text])-1)]
                 tts.say(textf)
@@ -26,6 +27,10 @@ while True:
                   t = time.time()
                   textf = wtime.howtime()
                   tts.say(textf)
+            if text in str(speak.speakkommand().keys())["ккакая сейчас погода"]:
+                t = time.time()
+                textf = weather.howweather()
+                tts.say(textf)
             if time.time()-t>30:
                 print(2)
                 break
