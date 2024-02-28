@@ -11,7 +11,7 @@ import time
 print("good")
 while True:
     if wwd.WakeWordDetect() == True:
-        tts.say("cлушаю")
+        tts.say("слушаю.")
         t = time.time()
         for text in stt.listen():      
             print(text)
@@ -19,18 +19,18 @@ while True:
                 t = time.time()
                 textf = speak.speakkommand()[text][random.randint(0,len(speak.speakkommand()[text])-1)]
                 tts.say(textf)
-            if text in speak.timedecoder("date"):
+            if speak.timedecoder("date") in text:
                 t = time.time()
                 textf = wtime.howdate()
                 tts.say(textf)
-            if text in speak.timedecoder("time"):
+            if speak.timedecoder("time") in text:
                   t = time.time()
                   textf = wtime.howtime()
                   tts.say(textf)
-            if text in "какакая сейчас погода":
+            if "какая сейчас погода" in text:
                 t = time.time()
                 textf = weather.howweather()
                 tts.say(textf)
-            if time.time()-t>30 or text=="пока":
+            if time.time()-t>30 or "пока" in text:
                 print(2)
                 break
