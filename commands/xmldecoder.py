@@ -21,4 +21,10 @@ def timedecoder(type:str): #time или date
             for phrse in child:
                 phrases.append(phrse.text)
                 return phrases
-                 
+def weatherinfodecoder(type:str): #city или api
+    tree = ET.parse('commands\\weather\\weather_info.xml')
+    root = tree.getroot()
+    for child in root:
+        f = str(*child.attrib.values())
+        if f == type:
+            return(child.text)

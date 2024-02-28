@@ -7,12 +7,12 @@ import random
 import time
 
 
-#print("good")
-#while True:
-    #if wwd.WakeWordDetect() == True:
-print(1)
-t = time.time()
-for text in stt.listen():      
+print("good")
+while True:
+    if wwd.WakeWordDetect() == True:
+        print(1)
+        t = time.time()
+        for text in stt.listen():      
             print(text)
             if text in str(speak.speakkommand().keys()):
                 t = time.time()
