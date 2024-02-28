@@ -16,7 +16,7 @@ model, example_text = torch.hub.load(repo_or_dir='snakers4/silero-models',
                                      language=language,
                                      speaker=model_id,
                                      trust_repo=True) # <- доверяем репозиторию
-
+import sounddevice as sd
 model.to(device)
 
 def say(text: str):
@@ -25,7 +25,7 @@ def say(text: str):
                             sample_rate=sample_rate,
                             put_accent=put_accent,
                             put_yo=put_yo)
-    import sounddevice as sd
+    
     sd.play(audio, sample_rate)
     time.sleep((len(audio) / sample_rate)+1.3)
     sd.stop()

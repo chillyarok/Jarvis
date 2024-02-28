@@ -16,12 +16,12 @@ while True:
             if text in str(speak.speakkommand().keys()):
                 textf = speak.speakkommand()[text][random.randint(0,len(speak.speakkommand()[text])-1)]
                 tts.say(textf)
-            if speak.timedecoder("date") in text:
+            if text in speak.timedecoder("date") :
                 textf = wtime.howdate()
                 tts.say(textf)
-            if speak.timedecoder("time") in text:
+            if text in speak.timedecoder("time") :
                   textf = wtime.howtime()
                   tts.say(textf)
-            if "какая сейчас погода" in text:
+            if "сейчас погода" in text:
                 textf = weather.howweather()
                 tts.say(textf)
