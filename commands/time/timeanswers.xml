@@ -2,8 +2,10 @@
 <commands>
     <time type = "time">
         <phrase>который час</phrase>
+        <phrase>сколько время</phrase>
     </time>
     <date type = "date">
         <phrase>какой сейчас день</phrase>
+        <phrase>какое сегодня число</phrase>
     </date>
 </commands>

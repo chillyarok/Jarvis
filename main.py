@@ -11,7 +11,7 @@ import time
 print("good")
 while True:
     if wwd.WakeWordDetect() == True:
-        print(1)
+        tts.say("cлушаю")
         t = time.time()
         for text in stt.listen():      
             print(text)
@@ -30,8 +30,7 @@ while True:
             if text in "какакая сейчас погода":
                 t = time.time()
                 textf = weather.howweather()
-                print(textf)
                 tts.say(textf)
-            if time.time()-t>30:
+            if time.time()-t>30 or text=="пока":
                 print(2)
                 break

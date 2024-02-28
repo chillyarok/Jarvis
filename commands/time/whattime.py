@@ -60,4 +60,4 @@ def howdate():
 def howtime():
     howhour = str(datetime.datetime.now().time().hour)
     howmin = str(datetime.datetime.now().minute)
-    return f'сейсас, {times[howhour]} {times[howmin]} минут'
+    return f'сейчас, {times[howhour]} {times[howmin]} минут'
