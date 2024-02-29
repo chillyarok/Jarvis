@@ -44,13 +44,23 @@ chisla = {
     '60': 'шестьдесят'
 }
 
+def weatherdecoder():
+    f = []
+    import xml.etree.ElementTree as ET
+    tree = ET.parse('commands\\weather\\weather_info.xml')
+    root = tree.getroot()
+    ff = root[1]
+    for i in ff:
+        f.append(i.text)
+    print(f)
+    return(f)
+weatherdecoder()
 def howweather():
     import xml.etree.ElementTree as ET
     def weatherinfodecoder():
         tree = ET.parse('commands\\weather\\weather_info.xml')
         root = tree.getroot()
         return root[0].text
-            
 
     import requests
 
@@ -59,3 +69,5 @@ def howweather():
     temperature = round(weather_data['main']['temp'])
     weather = weather_data['weather'][0]['description']
     return(f'Сейчас {chisla[str(temperature)]} градусов. {str(weather)}.')
+
+howweather()

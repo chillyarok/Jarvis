@@ -19,6 +19,9 @@ def timedecoder(type:str): #time или date
     for child in root:
         f = str(*child.attrib.values())
         if f == type:
-            for phrse in child:
-                phrases.append(phrse.text)
-                return phrases
+            for phrse in range(0,len(child)):
+                phrases.append(child[phrse].text)
+            return phrases
+            
+
+timedecoder("date")

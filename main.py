@@ -1,7 +1,7 @@
 import tts
 import stt
 import commands.xmldecoder as speak
-import commands.time.whattime as wtime
+import commands.time.ttime as wtime
 import wake_word_detect as wwd
 import commands.weather.weather as weather
 import random
@@ -16,12 +16,21 @@ while True:
             if text in str(speak.speakkommand().keys()):
                 textf = speak.speakkommand()[text][random.randint(0,len(speak.speakkommand()[text])-1)]
                 tts.say(textf)
-            if text in speak.timedecoder("date") :
-                textf = wtime.howdate()
-                tts.say(textf)
-            if text in speak.timedecoder("time") :
-                  textf = wtime.howtime()
-                  tts.say(textf)
-            if "сейчас погода" in text:
-                textf = weather.howweather()
-                tts.say(textf)
+            for k in speak.timedecoder("date"):
+                if k in text:
+                    textf = wtime.howdate()
+                    tts.say(textf)
+                else:
+                    continue
+            for k in speak.timedecoder("time"):
+                if k in text:
+                    textf = wtime.howtime()
+                    tts.say(textf)
+                else:
+                    continue
+            for k in weather.weatherdecoder():
+                if k in text:
+                    textf = weather.howweather()
+                    tts.say(textf)
+                else:
+                    continue
