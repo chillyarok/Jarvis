@@ -60,4 +60,9 @@ def howdate():
 def howtime():
     howhour = str(datetime.datetime.now().time().hour)
     howmin = str(datetime.datetime.now().minute)
-    return f'сейчас, {times[howhour]} {times[howmin]} минут'
+    if howmin=="0":
+        return f'сейчас, {times[howhour]} ровно'
+    elif len(howmin)==1:
+        return f'сейчас, {times[howhour]} ноль {times[howmin]}'
+    else:
+        return f'сейчас, {times[howhour]} {times[howmin]}'
