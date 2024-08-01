@@ -69,5 +69,3 @@ def howweather():
     temperature = round(weather_data['main']['temp'])
     weather = weather_data['weather'][0]['description']
     return(f'Сейчас {chisla[str(temperature)]} градусов. {str(weather)}.')
-
-howweather()

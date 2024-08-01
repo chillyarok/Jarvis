@@ -1,6 +1,6 @@
 import torch
 import time
-
+# обязательно установить omegaconf
 language = 'ru'
 model_id = 'v3_1_ru' # другая версия русского
 sample_rate = 48000
@@ -29,3 +29,4 @@ def say(text: str):
     sd.play(audio, sample_rate)
     time.sleep((len(audio) / sample_rate)+1.3)
     sd.stop()
+

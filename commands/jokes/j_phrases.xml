@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<commands>
+    <command type="joke">
+        <phrase>расскажи анекдот</phrase>
+    </command>
+</commands>

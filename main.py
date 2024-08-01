@@ -1,9 +1,10 @@
 import tts
 import stt
 import commands.xmldecoder as speak
-import commands.ttime.ttime as wtime
+import commands.timedate.ttime as wtime
 import wake_word_detect as wwd
 import commands.weather.weather as weather
+from commands.jokes.jokes import getjoke
 import random
 import time
 
@@ -39,5 +40,11 @@ while True:
                     tts.say(textf)
                 else:
                     continue
+            for k in speak.jokedecoder():
+                if k in text:
+                    t  = time.time()
+                    textf = getjoke()
+                    tts.say(textf)
+                    print(textf)
             if time.time()-t>=30:
                 break
