@@ -2,7 +2,7 @@ import vosk
 import json
 import pyaudio
 
-model = vosk.Model("models\\vosk-model-small-ru-0.22")
+model = vosk.Model("core\\vosk-model-small-ru-0.22")
 sample_rate = 16000
 rec = vosk.KaldiRecognizer(model, sample_rate)
 p = pyaudio.PyAudio()
