@@ -4,7 +4,7 @@ from core.tts import say
 from core.wake_word_detect import WakeWordDetect
 import time
 
-from commands.weather.module import speak
+from commands.weather import module as weather
 print("good")
 while True:
     if WakeWordDetect() == True:
@@ -12,9 +12,6 @@ while True:
         t = time.time()
         for text in listen():      
             print(text)
-            try:
-                say(speak(text))
-            except:
-                pass
+            say(weather.speak(text))
             if time.time()-t>=30:
                 break

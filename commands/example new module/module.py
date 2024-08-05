@@ -1,6 +1,6 @@
-from xml.etree.ElementTree import parse
-from core.tts import say
+'''ТРЕБУЕМЫЕ БИБЛИОТЕКИ ВЫЗЫВАЮТСЯ СУГУБО ВНУТРИ ФУНКЦИЙ'''
 def xmlr():
+    from xml.etree.ElementTree import parse
     act_phrases = []
     tree = parse('commands\\example new module\\act_phrases.xml') # example new module меняется на папку с вашим модулем
     root = tree.getroot()
@@ -16,6 +16,8 @@ def speak(detected_text:str):
     act_phrases = xmlr()
     if detected_text in act_phrases:
         pass
-        #say(main())
+        #return(main())
+    else:
+        return "0"
 
 

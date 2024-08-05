@@ -2,5 +2,6 @@
 <commands>
     <command>
         <phrase>какая сейчас погода</phrase>
+        <phrase>какая погода</phrase>
     </command>
 </commands>
